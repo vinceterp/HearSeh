@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
+import {StatusBar, View, Text} from 'react-native';
 
 interface DashboardProps {
   userName?: string;
@@ -7,11 +8,10 @@ interface DashboardProps {
 
 const Dashboard = (props: DashboardProps) : JSX.Element => {
   return (
-		<div>
-			<h1>{props.userName}</h1>
-			<p>Dashboard</p>
-		</div>
-  );
+		<View>
+			<Text>Dashboard</Text>
+		</View>
+	);
 };
 
 export default Dashboard;

@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import {View, Text} from "react-native";
 import React from 'react';
 
 declare interface ChatProps {
@@ -6,11 +7,11 @@ declare interface ChatProps {
 }
 
 const Chat = (props: ChatProps) : JSX.Element => {
-    console.info(props);
+    // console.info(props);
     return (
-        <div>
-            <p>Chat</p>
-        </div>
+        <View>
+            <Text>Chat</Text>
+        </View>
     );
 };
 

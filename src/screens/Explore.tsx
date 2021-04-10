@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
-import {StatusBar} from 'react-native';
+import {StatusBar, View, Text} from 'react-native';
 import React from 'react';
-import {View} from 'react-native';
 import MapView from 'react-native-maps';
 import styles from '../styles/styles';
+import { NavigationPanel } from '../components/NavigationPanel'
 
 export interface ExploreProps {
     markers?: Array<Object>,
@@ -12,10 +12,10 @@ export interface ExploreProps {
 
 const Explore = (props: ExploreProps) : JSX.Element => {
 	const isMobile = true;
+	
 	return (
-		<View style={styles.container}>
-			<StatusBar barStyle="default" />
-			{isMobile && <MapView style={styles.map} />}
+		<View>
+			<MapView style={styles.map}/>
 		</View>
   	);
 };

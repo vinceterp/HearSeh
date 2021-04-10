@@ -1,16 +1,17 @@
 /* eslint-disable prettier/prettier */
+import {View, Text} from "react-native";
 import React from 'react';
 
 declare interface HomeProps {
-  userName?: String;
+    userName?: String;
 }
 
 const Home = (props: HomeProps) : JSX.Element => {
-    console.info(props);
+    // console.info(props);
     return (
-        <div>
-            <p>Home</p>
-        </div>
+        <View>
+            <Text>Home</Text>
+        </View>
     );
 };
 
