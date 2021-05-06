@@ -25,10 +25,7 @@ export const NavigationPanel = (props: NavigationPanelProps) => {
 
                 <View>
                     <Link to="/">
-                        
-                        <View>
-                            <Image style={styles.navIcon} source={require('../../assets/navIcons/home_icon.png')}/>
-                        </View>
+                        <Image style={styles.navIcon} source={require('../../assets/navIcons/home_icon.png')}/>   
                     </Link>
                 </View>
                 <View>
@@ -47,8 +44,8 @@ export const NavigationPanel = (props: NavigationPanelProps) => {
                     </Link>
                 </View>
             </View>
-            <Route exact path="/explore" component={Explore}/>
-            <Route path="/" component={Home}/>
+            <Route exact path="/" component={Home}/>
+            <Route path="/explore" component={Explore}/>
             <Route path="/chat" component={Chat}/>
             <Route path="/dashboard" component={Dashboard}/>
         </NativeRouter>

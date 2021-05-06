@@ -14,7 +14,7 @@ const Explore = (props: ExploreProps) : JSX.Element => {
 	const isMobile = true;
 	
 	return (
-		<View>
+		<View style = {styles.container}>
 			<MapView style={styles.map}/>
 		</View>
   	);
