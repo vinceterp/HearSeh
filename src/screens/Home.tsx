@@ -14,13 +14,11 @@ const Home = (props: HomeProps) : JSX.Element => {
     const scheme = useColorScheme();
     return (
         <AppearanceProvider>
-            <NavigationContainer theme={scheme === "dark" ? DarkTheme : DefaultTheme}>
-                <View 
-                style={scheme === "dark" ? styles.darkModeContainer : styles.container}
-                >
-                    <Text style= {{color: scheme === "dark" ? '#fff' : '#000000'}}>Home</Text>
-                </View>
-            </NavigationContainer>
+            <View 
+            style={scheme === "dark" ? styles.darkModeContainer : styles.container}
+            >
+                <Text style= {{color: scheme === "dark" ? '#fff' : '#000000'}}>Home</Text>
+            </View>
         </AppearanceProvider>
     );
 };

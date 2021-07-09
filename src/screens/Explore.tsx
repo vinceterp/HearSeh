@@ -3,7 +3,6 @@ import {StatusBar, View, Text} from 'react-native';
 import React from 'react';
 import MapView from 'react-native-maps';
 import styles from '../styles/styles';
-import { NavigationPanel } from '../components/NavigationPanel'
 
 export interface ExploreProps {
     markers?: Array<Object>,

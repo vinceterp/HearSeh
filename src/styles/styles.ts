@@ -39,27 +39,34 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: "row",
         
+        position: 'absolute',
+        bottom: 25,
+        left: 20,
+        right: 20,
+        alignItems: 'center',
         backgroundColor: "#63316D",
-        // backgroundColor: "#717171",
-        width: "80%",
-        height: 60,
-        position: "absolute",
-        zIndex: 1,
-        borderRadius: 22,
-        alignItems: "center",
-        justifyContent: "space-evenly",
-        // zIndex: 1,
-        top: Dimensions.get('window').height - 85,
-        alignSelf: "center",
+        borderRadius: 25,
+        height: 55,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 7 },
-        shadowOpacity: 0.3,
+        shadowOpacity: 0.2,
         shadowRadius: 4,
+        // borderColor: '#32cd32',
+        // borderWidth: 5
     },
     navIcon: {
         // opacity: 0.5,
         height: 25,
         width: 25,
+    },
+    navIconContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        width: 60,
+        borderColor: '#32cd32',
+        borderWidth: 5
     }
 });
 
