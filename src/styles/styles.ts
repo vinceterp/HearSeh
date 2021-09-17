@@ -3,6 +3,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 const styles = StyleSheet.create({
     darkModeContainer: {
         display: 'flex',
+        flex: 1,
         backgroundColor: "#000000",
         color: '#fff',
         alignItems: 'center',
@@ -10,8 +11,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         height: Dimensions.get('window').height,
         width: Dimensions.get('window').width,
-        padding: 10,
-        // margin: 5,
+        paddingTop: 25,
         // borderColor: '#32cd32',
         // borderWidth: 5
     },
@@ -20,12 +20,11 @@ const styles = StyleSheet.create({
         display: "flex",
         // backgroundColor: "#fff",
         alignItems: 'center',
-        justifyContent: "center",
+        
         alignSelf: 'center',
         height: Dimensions.get('window').height,
         width: Dimensions.get('window').width,
-        padding: 10,
-        // margin: 5,
+        paddingTop: 25
         // borderColor: '#32cd32',
         // borderWidth: 5
         
@@ -37,27 +36,30 @@ const styles = StyleSheet.create({
     },
     navigationPanelContainer: {
         display: 'flex',
-        flexDirection: "row",
+        flexDirection: 'row',
         
         position: 'absolute',
         bottom: 25,
         left: 20,
         right: 20,
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: "#63316D",
         borderRadius: 25,
-        height: 55,
+        margin: 0,
+        padding: 0,
+        height: 60,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 7 },
         shadowOpacity: 0.2,
         shadowRadius: 4,
+        borderTopWidth: 0,
         // borderColor: '#32cd32',
         // borderWidth: 5
     },
     navIcon: {
-        // opacity: 0.5,
-        height: 25,
-        width: 25,
+        height: 26,
+        width: 26,
     },
     navIconContainer: {
         display: 'flex',
@@ -65,8 +67,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: '100%',
         width: 60,
-        borderColor: '#32cd32',
-        borderWidth: 5
+        // borderColor: '#32cd32',
+        // borderWidth: 5
     }
 });
 

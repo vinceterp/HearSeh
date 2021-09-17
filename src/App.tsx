@@ -1,16 +1,13 @@
 // import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { Button, StyleSheet, Text, View} from 'react-native';
-import styles from './styles/styles';
-
+import React, { useState, useEffect } from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import LandingPage from './screens/LandingPage';
 import Login from './screens/Login';
-
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import { DefaultTheme, DarkTheme, NavigationContainer } from '@react-navigation/native';
-
 import {AuthContext} from "./utils/context";
+import AppLoading from 'expo-app-loading';
+import {useFonts} from 'expo-font';
 
 const userToken = {
 	value: "123456",
@@ -18,14 +15,14 @@ const userToken = {
 	createdAt: "",
 }
 
-
-
 const ActiveStack = createStackNavigator();
-const ActiveStackScreen = ({userToken} : any) => {
-	console.info(userToken);
+const ActiveStackScreen = ({ appState } : any) => {
+	let token = appState && appState.userToken;
+	console.info(token)
+	// console.info(userToken);
 	return (
 		<ActiveStack.Navigator headerMode= "none">
-			{userToken.value ? 
+			{token.value ? 
 				(<ActiveStack.Screen
 					name="LandingPage"
 					component={LandingPage}
@@ -43,27 +40,50 @@ const ActiveStackScreen = ({userToken} : any) => {
 export default function App() {
 	
 	const scheme = useColorScheme();
-	const [loggedInState, setLoggedIn] = useState({loggedIn: false});
-	const [userTokenState, setUserToken] = useState({value: "", expiresAt: "", createdAt: ""});
+	const [appState, setAppState] = useState({
+		'userToken': 
+			{
+				value: "", 
+				expiresAt: "", 
+				createdAt: ""
+			}
+		,'loggedIn': false});
+	// const [loggedInState, setLoggedIn] = useState({loggedIn: false});
+	// const [userTokenState, setUserToken] = useState({value: "", expiresAt: "", createdAt: ""});
+	// const [fontsLoaded, setFontsLoadedState] = useState({fontsLoaded: false});
+
+	const [fontsLoaded] = useFonts({
+		Lobster: require('../assets/fonts/Lobster.ttf')
+	})
+
+	// if(!fontsLoaded){
+	// 	return <AppLoading/>
+	// }
 	
+	// const authContext= React.useMemo(()=>{
+	// 	return {
+	// 		signIn: () => {
+	// 			console.log("logging in");
+	// 		}
+	// 	}
+	// },[]);
+
 	const authContext = React.useMemo(() => {
 		return {
 			signIn: () => {
-				console.log("Signing in")
-				setUserToken(userToken);
+				console.log("Signing in");
+				setAppState({...appState, 'userToken': userToken, 'loggedIn': true});
 			},
 			signOut: () => {
-				setUserToken({value: "", expiresAt: "", createdAt: ""});
+				setAppState({...appState, 'userToken': {value: "", expiresAt: "", createdAt: ""}, 'loggedIn': false});
 			}
 		}
-	}, []);
+	},[]);
 
-	//style={scheme === "dark" ? styles.darkModeContainer : styles.container}
-	// console.info(userTokenState)
 	return (  
 		<AuthContext.Provider value= {authContext}>
 			<NavigationContainer>
-				<ActiveStackScreen userToken= {userTokenState}/>	
+				 <ActiveStackScreen appState={appState}/>
 			</NavigationContainer>
 		</AuthContext.Provider>
 	);

@@ -16,17 +16,26 @@ const LandingPage = (props: LandingPageProps) => {
     const LandingPageNavigator = createBottomTabNavigator();
 
     const bumpAnimation = useRef(new Animated.Value(0)).current;
-    const bumpMotion = () => {
-        Animated.spring(bumpAnimation, {
-            toValue: 10,
-            useNativeDriver: true,
-        }).start();
+    // const bumpMotion = () => {
+    //     Animated.spring(bumpAnimation, {
+    //         toValue: 40,
+    //         useNativeDriver: true,
+    //     }).start();
 
-        Animated.spring(bumpAnimation, {
-            toValue: 0,
-            useNativeDriver: true,
-        }).start();
-    }
+    //     Animated.spring(bumpAnimation, {
+    //         toValue: 0,
+    //         useNativeDriver: true,
+    //     }).start();
+    // }
+    React.useEffect(()=> {
+        Animated.spring(
+            bumpAnimation,
+            {
+                toValue: 20,
+                useNativeDriver: true,
+            }
+        ).start();
+    }, [bumpAnimation])
 
     return (
         <LandingPageNavigator.Navigator
@@ -40,9 +49,9 @@ const LandingPage = (props: LandingPageProps) => {
                     options={{
                         tabBarIcon: ({focused}) => {
                             return (
-                                <View >
-                                    <Image style={styles.navIcon} source={require('../../assets/navIcons/home_icon.png')}/>   
-                                </View>)}
+                                <Animated.View>
+                                    <Image style={{...styles.navIcon, opacity: focused ? 1 : 0.5}} source={require('../../assets/navIcons/home_icon.png')}/>   
+                                </Animated.View>)}
                     }}/>
                 <LandingPageNavigator.Screen 
                     name="Explore" 
@@ -51,7 +60,7 @@ const LandingPage = (props: LandingPageProps) => {
                         tabBarIcon: ({focused}) => {
                             return (
                                 <View>
-                                    <Image style={styles.navIcon} source={require("../../assets/navIcons/compass.png")}></Image>
+                                    <Image style={{...styles.navIcon, opacity: focused ? 1 : 0.5}} source={require("../../assets/navIcons/compass.png")}></Image>
                                 </View>)}
                     }}/>
                 <LandingPageNavigator.Screen 
@@ -61,7 +70,7 @@ const LandingPage = (props: LandingPageProps) => {
                         tabBarIcon: ({focused}) => {
                             return (
                                 <View>
-                                    <Image style={styles.navIcon} source={require("../../assets/navIcons/chat_icon.png")}></Image>
+                                    <Image style={{...styles.navIcon, opacity: focused ? 1 : 0.5}} source={require("../../assets/navIcons/chat_icon.png")}></Image>
                                 </View>)}
                     }}/>
                 <LandingPageNavigator.Screen 
@@ -71,7 +80,7 @@ const LandingPage = (props: LandingPageProps) => {
                         tabBarIcon: ({focused}) => {
                             return (
                                 <View>
-                                    <Image style={styles.navIcon} source={require("../../assets/navIcons/dashboard_icon.png")}></Image>
+                                    <Image style={{...styles.navIcon, opacity: focused ? 1 : 0.5}} source={require("../../assets/navIcons/dashboard_icon.png")}></Image>
                                 </View>)}
                     }}/>
         </LandingPageNavigator.Navigator>
